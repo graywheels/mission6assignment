@@ -11,10 +11,16 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult About()
     {
-        return View();
+        return View("About");
     }
+    
+    public IActionResult AddMovie()
+    {
+        return View("AddMovie");
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

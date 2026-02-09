@@ -1,0 +1,75 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Get to know Joel Hilton - The Joel Hilton Film Collection</title>
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/mission6assignment.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The Joel Hilton Film Collection</a>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">Get to Know Joel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddMovie">Add a Movie</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-5">
+    <div class="card mx-auto shadow" style="max-width: 600px; border: 1px solid #343a40;">
+        <div class="card-header bg-dark text-white text-center">
+            <h2 class="mb-0">Get to Know Joel Hilton</h2>
+        </div>
+        
+        <div class="card-body text-center bg-light">
+            <p class="lead">
+                Check out <a href="https://www.qwcomedy.com/" target="_blank" class="fw-bold text-dark">Quick Wits Comedy</a> 
+                where Joel performs regularly!
+            </p>
+            
+            <hr />
+
+            <p>
+                Love movies and pop culture? Visit the 
+                <a href="https://baconsale.com/" target="_blank" class="text-dark fw-bold">Baconsale site</a>.
+            </p>
+
+            <div class="mt-4">
+                <a href="https://baconsale.com/" target="_blank">
+                    <img src="~/img/BaconsaleKate.jpg" 
+                         alt="Baconsale Podcast" 
+                         class="img-fluid rounded shadow-lg" 
+                         style="max-width: 400px; border: 3px solid #343a40;" />
+                </a>
+            </div>
+        </div>
+
+        <div class="card-footer bg-dark text-white-50 text-center small">
+            Click the image above to listen to the podcast!
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
