@@ -1,32 +1,38 @@
-namespace mission6assignment.Models;
 using System.ComponentModel.DataAnnotations;
 
-public class Movie
+namespace mission6assignment.Models
 {
-    [Key]
-    [Required]
-    public int MovieId { get; set; } // Primary Key
+    public class Movie
+    {
+        // Primary Key (matches database)
+        [Key]
+        public int MovieId { get; set; }
 
-    [Required]
-    public string Category { get; set; }
+        // Foreign key to Categories table (exists in DB)
+        public int? CategoryId { get; set; }
 
-    [Required]
-    public string Title { get; set; }
+        // REQUIRED FIELDS PER ASSIGNMENT
+        [Required(ErrorMessage = "Title is required.")]
+        public string? Title { get; set; }
 
-    [Required]
-    [Range(1888, 2100)] // Validates a realistic year
-    public int Year { get; set; }
+        [Required(ErrorMessage = "Year is required.")]
+        [Range(1888, 2100, ErrorMessage = "Year must be 1888 or later.")]
+        public int? Year { get; set; }
 
-    [Required]
-    public string Director { get; set; }
+        [Required(ErrorMessage = "Edited selection is required.")]
+        public bool? Edited { get; set; }
 
-    [Required]
-    public string Rating { get; set; } // Dropdown: G, PG, PG-13, R
+        [Required(ErrorMessage = "CopiedToPlex selection is required.")]
+        public bool? CopiedToPlex { get; set; }
 
-    public bool Edited { get; set; } // true/false
+        // Optional fields (based on DB allowing NULLs)
+        public string? Director { get; set; }
 
-    public string? LentTo { get; set; } // Optional (?)
+        public string? Rating { get; set; }
 
-    [MaxLength(25)] // Limits notes to 25 characters
-    public string? Notes { get; set; } // Optional
+        public string? LentTo { get; set; }
+
+        [MaxLength(25)]
+        public string? Notes { get; set; }
+    }
 }
