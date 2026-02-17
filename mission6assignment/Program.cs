@@ -10,6 +10,11 @@ builder.Services.AddDbContext<MovieApplicationContext>(options =>
     options.UseSqlite(builder.Configuration["ConnectionStrings:GrayString"]);
 });
 
+builder.Services.AddDbContext<MovieApplicationContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

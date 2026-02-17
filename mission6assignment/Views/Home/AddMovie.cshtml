@@ -1,102 +1,81 @@
-@{
-    Layout = null;
-}
+@model Movie
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Add a Movie - The Joel Hilton Film Collection</title>
-    
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/mission6assignment.styles.css" asp-append-version="true"/>
-</head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The Joel Hilton Film Collection</a>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">Get to Know Joel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddMovie">Add a Movie</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<h2 class="text-center mt-4">Add a Movie to the Collection</h2>
 
-
-
-<div class="container">
-   @model Movie
-
-<div class="container mt-5">
+<div class="container mt-4">
     <div class="mx-auto border p-4 shadow-sm" style="max-width: 600px;">
-        <h2 class="text-center mb-4">Add a Movie to the Collection</h2>
 
-        <form method="post">
-            <div class="mb-3">
-                <label asp-for="Category" class="form-label">Category</label>
-                <input asp-for="Category" class="form-control" required />
-            </div>
+        <form asp-action="AddMovie" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="mb-3">
-                <label asp-for="Title" class="form-label">Title</label>
-                <input asp-for="Title" class="form-control" required />
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="row">
                 <div class="col mb-3">
-                    <label asp-for="Year" class="form-label">Year</label>
-                    <input asp-for="Year" class="form-control" required />
+                    <label asp-for="Year" class="form-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
                 </div>
+
                 <div class="col mb-3">
-                    <label asp-for="Rating" class="form-label">Rating</label>
-                    <select asp-for="Rating" class="form-select" required>
-                        <option value="">Select a Rating</option>
-                        <option value="G">G</option>
-                        <option value="PG">PG</option>
-                        <option value="PG-13">PG-13</option>
-                        <option value="R">R</option>
+                    <label asp-for="Rating" class="form-label"></label>
+                    <select asp-for="Rating" class="form-select">
+                        <option value="">Select Rating</option>
+                        <option>G</option>
+                        <option>PG</option>
+                        <option>PG-13</option>
+                        <option>R</option>
                     </select>
+                    <span asp-validation-for="Rating" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label asp-for="Director" class="form-label">Director</label>
-                <input asp-for="Director" class="form-control" required />
-            </div>
-
-            <div class="mb-3 form-check">
-                <input asp-for="Edited" type="checkbox" class="form-check-input" />
-                <label asp-for="Edited" class="form-check-label">Has this movie been edited?</label>
+                <label asp-for="Director" class="form-label"></label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
-                <label asp-for="LentTo" class="form-label">Lent To:</label>
+                <label class="form-label">Edited?</label>
+                <div>
+                    <input type="radio" asp-for="Edited" value="true" /> Yes
+                    <input type="radio" asp-for="Edited" value="false" /> No
+                </div>
+                <span asp-validation-for="Edited" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Copied to Plex?</label>
+                <div>
+                    <input type="radio" asp-for="CopiedToPlex" value="true" /> Yes
+                    <input type="radio" asp-for="CopiedToPlex" value="false" /> No
+                </div>
+                <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LentTo" class="form-label"></label>
                 <input asp-for="LentTo" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label asp-for="Notes" class="form-label">Notes (Max 25 chars)</label>
-                <textarea asp-for="Notes" class="form-control" rows="2" maxlength="25"></textarea>
+                <label asp-for="Notes" class="form-label"></label>
+                <textarea asp-for="Notes" class="form-control" maxlength="25"></textarea>
             </div>
 
-            <button type="submit" class="btn w-100" style="color: #a0938a;">Submit Movie</button>
+            <button type="submit" class="btn btn-primary w-100">
+                Submit Movie
+            </button>
         </form>
     </div>
 </div>
-</div>
 
-</body>
-</html>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
