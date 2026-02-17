@@ -30,9 +30,13 @@ public class HomeController : Controller
     // READ - Show all movies
     public IActionResult MovieList()
     {
-        var movies = _context.Movies.ToList();
+        var movies = _context.Movies
+            .OrderBy(m => m.Title)
+            .ToList();
+
         return View(movies);
     }
+
     // CREATE
     [HttpGet]
     public IActionResult AddMovie()

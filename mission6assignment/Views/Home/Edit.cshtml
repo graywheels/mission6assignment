@@ -1,0 +1,45 @@
+@model mission6assignment.Models.Movie
+<h2 class="text-center mt-4">Edit Movie</h2>
+
+<div class="container mt-4">
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="MovieId" />
+
+        <div class="mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Year"></label>
+            <input asp-for="Year" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Director"></label>
+            <input asp-for="Director" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Rating"></label>
+            <input asp-for="Rating" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Edited?</label><br />
+            <input type="radio" asp-for="Edited" value="true" /> Yes
+            <input type="radio" asp-for="Edited" value="false" /> No
+        </div>
+
+        <div class="mb-3">
+            <label>Copied to Plex?</label><br />
+            <input type="radio" asp-for="CopiedToPlex" value="true" /> Yes
+            <input type="radio" asp-for="CopiedToPlex" value="false" /> No
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a asp-action="MovieList" class="btn btn-secondary">Cancel</a>
+
+    </form>
+</div>
