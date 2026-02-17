@@ -1,0 +1,15 @@
+@model mission6assignment.Models.Movie
+<h2 class="text-center mt-4">Delete Movie</h2>
+
+<div class="container mt-4">
+    <div class="alert alert-danger">
+        Are you sure you want to delete <strong>@Model.Title</strong>?
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MovieId" />
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="MovieList" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
