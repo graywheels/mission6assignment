@@ -37,7 +37,7 @@ public class HomeController : Controller
         return View(movies);
     }
 
-    // CREATE
+    // CREATEs the stuff
     [HttpGet]
     public IActionResult AddMovie()
     {
