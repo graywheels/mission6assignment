@@ -10,11 +10,13 @@
             <th>Year</th>
             <th>Director</th>
             <th>Rating</th>
+            <th>Category</th>   
             <th>Edited</th>
             <th>Copied To Plex</th>
             <th>Actions</th>
         </tr>
         </thead>
+
 
         <tbody>
         @foreach (var movie in Model)
@@ -24,8 +26,10 @@
                 <td>@movie.Year</td>
                 <td>@movie.Director</td>
                 <td>@movie.Rating</td>
+                <td>@movie.Category?.CategoryName</td>   
                 <td>@movie.Edited</td>
                 <td>@movie.CopiedToPlex</td>
+
                 <td>
                     <a asp-action="Edit"
                        asp-route-id="@movie.MovieId"

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using mission6assignment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace mission6assignment.Controllers;
 
@@ -28,19 +29,24 @@ public class HomeController : Controller
 
 
     // READ - Show all movies
+    
     public IActionResult MovieList()
     {
         var movies = _context.Movies
+            .Include(m => m.Category)  
             .OrderBy(m => m.Title)
             .ToList();
 
         return View(movies);
     }
 
+
+
     // CREATEs the stuff
     [HttpGet]
     public IActionResult AddMovie()
     {
+        ViewBag.Categories = _context.Categories.ToList();
         return View();
     }
 
